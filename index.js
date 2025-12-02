@@ -2163,7 +2163,7 @@ VALUES ($1,$2,$3) RETURNING *;`;
 
         res.cookie("Token", newAccessToken, {
           httpOnly: true,
-          secure: false,
+          secure: true,
           sameSite: "Strict",
         });
         res.json({ message: "Access token refreshed" });
@@ -2207,12 +2207,12 @@ VALUES ($1,$2,$3) RETURNING *;`;
         res
           .cookie("Token", accessToken, {
             httpOnly: true,
-            secure: false,
+            secure: true,
             sameSite: "Strict",
           })
           .cookie("RefreshToken", refreshToken, {
             httpOnly: true,
-            secure: false,
+            secure: true,
             sameSite: "Strict",
           })
           .redirect(`${process.env.BASEURL}${redirectPath}`); // Redirect to dashboard
@@ -2514,12 +2514,12 @@ VALUES ($1,$2,$3) RETURNING *;`;
         res
           .cookie("Token", accessToken, {
             httpOnly: true,
-            secure: false,
+            secure: true,
             sameSite: "Strict",
           })
           .cookie("RefreshToken", refreshToken, {
             httpOnly: true,
-            secure: false,
+            secure: true,
             sameSite: "Strict",
           })
           .status(200)
