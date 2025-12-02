@@ -15,7 +15,6 @@ const cookieParser = require("cookie-parser");
 const { default: axios } = require("axios");
 const transporter = require("./mailer");
 const createNotification = require("./createNotification");
-const createServer = require("@vercel/node");
 async function sendEmail(to, subject, html = null) {
   try {
     const info = await transporter.sendMail({
@@ -6174,7 +6173,6 @@ app.get("/", (req, res) => {
   res.send("Welcome to Bazarigo Server!");
 });
 
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`);
-// });
-module.exports = createServer(app);
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
